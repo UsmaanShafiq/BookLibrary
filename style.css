@@ -12,7 +12,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100vw;
+    width: 100%;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
     padding: 20px 60px;
 }
@@ -33,8 +33,7 @@
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 .books-card-container{
-    width: 1200px;
-    padding: 60px 0px;
+    padding: 60px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(auto-fit , minmax(300px, 1fr));
@@ -45,16 +44,110 @@
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
     text-align: center;
     font-size: 18px;
+    border-radius: 10px;
+}
+.card p{
+    padding: 10px 0;
+    margin: 10px 0;
+    background-color: lightgoldenrodyellow;
+    border-radius: 10px;
+}
+.card .btn-group{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.card .btn-group input{
+    width: 35px;
+    height: 35px;
+    border-radius: 50px;
+    padding: 8px;
+    margin: 15px 5px 5px 5px;
+}
+.card .btn-group input.read-btn{
+    background: rgb(200, 250, 200);
+}
+.card .btn-group input.del-btn{
+    background: rgb(253, 212, 196);
 }
 .add-book-btn{
-    background: #923C23;
+    background: lightsalmon;
     padding: 10px 12px;
     border-radius: 50%;
-    position: absolute;
+    position: fixed;
     right: 20px;
     bottom: 20px;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
 }
 .add-btn-icon{
     height: 40px;
     width: 40px;
+}
+#modal-box-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    visibility: hidden;
+}
+
+.modal-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+    margin: 0px auto;
+    padding: 50px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+.modal-title{
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 15px;
+    color: rgb(43, 41, 41);
+}
+.modal-box form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.modal-box form input{
+    padding: 10px 20px;
+    background: lightgoldenrodyellow;
+    margin-bottom: 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+}
+.modal-box form input[type='submit']{
+    background: lightsalmon;
+    font-weight: 500;
+    color: #fff;
+}
+.modal-box form input[type='submit']:hover{
+    background: rgb(214, 133, 100);
+    cursor: pointer;
+}
+#close-modal{
+    font-style: italic;
+    color: rgb(136, 133, 133);
+    text-decoration: underline;
+    text-align: center;
+    margin: 0 auto;
+    background: transparent;
+    cursor: pointer;
+}
+@media screen and (max-width: 767px) {
+    .modal-box{
+        width: 100%;
+        margin: 0px 15px;
+    }
 }

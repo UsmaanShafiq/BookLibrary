@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/8e240e46a8.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./style.css">
     <title>Library</title>
 </head>
@@ -16,67 +17,44 @@
             </div>
         </nav>
     </div>
-    <section class="books-card-container">
-        <div class="card">
+    <section class="books-card-container" id="bookCardContainer">
+        <!-- <div class="card">
             <p class="book-name">Book Name</p>
             <p class="book-author">Author</p>
             <p class="book-pages">232</p>
             <div class="btn-group">
-                <button class="btn">Read</button>
-                <button class="btn">Delete</button>
+                <input type="image" src="./assets/icons/eye.svg" class="read-btn" alt="read_btn">
+                <input type="image" src="./assets/icons/delete.svg" class="del-btn" alt="delete_btn">
             </div>
-        </div>
-        <div class="card">
-            <p class="book-name">Book Name</p>
-            <p class="book-author">Author</p>
-            <p class="book-pages">232</p>
-            <div class="btn-group">
-                <button class="btn">Read</button>
-                <button class="btn">Delete</button>
-            </div>
-        </div>
-        <div class="card">
-            <p class="book-name">Book Name</p>
-            <p class="book-author">Author</p>
-            <p class="book-pages">232</p>
-            <div class="btn-group">
-                <button class="btn">Read</button>
-                <button class="btn">Delete</button>
-            </div>
-        </div>
-        <div class="card">
-            <p class="book-name">Book Name</p>
-            <p class="book-author">Author</p>
-            <p class="book-pages">232</p>
-            <div class="btn-group">
-                <button class="btn">Read</button>
-                <button class="btn">Delete</button>
-            </div>
-        </div>
-        <div class="card">
-            <p class="book-name">Book Name</p>
-            <p class="book-author">Author</p>
-            <p class="book-pages">232</p>
-            <div class="btn-group">
-                <button class="btn">Read</button>
-                <button class="btn">Delete</button>
-            </div>
-        </div>
-        <div class="card">
-            <p class="book-name">Book Name</p>
-            <p class="book-author">Author</p>
-            <p class="book-pages">232</p>
-            <div class="btn-group">
-                <button class="btn">Read</button>
-                <button class="btn">Delete</button>
-            </div>
-        </div>
+        </div> -->
     </section>
 
     <div class="add-book-btn-container">
-        <button class="add-book-btn">
+        <div id="modal-box-container">
+            <div class="modal-box">
+                <h3 class="modal-title">Add Book</h3>
+                <form id="addBookForm">
+                    <input type="text" name="book_name" placeholder="Enter book name..." id="book_name" required>
+                    <input type="text" name="book_author" placeholder="Enter author name..." id="book_author" required>
+                    <input type="number" name="book_pages" min="1" max="1000" placeholder="Enter total pages..." id="book_pages" required>
+                    <fieldset>
+                        <legend>Already read the book?</legend>
+                        <div class="book-status-fields">
+                          <input type="radio" id="read-yes" name="read-status" value="yes" checked>
+                          <label for="read-yes">Yes</label>
+                          <input type="radio" id="read-no" name="read-status" value="no">
+                          <label for="read-no">No</label>
+                        </div>
+                    </fieldset>
+                    <input type="submit" value="Add Book" id="add_book_btn">
+                </form>
+                <button id="close-modal">Don't want to add.</button>
+            </div>
+        </div>
+        <button class="add-book-btn" id="modal-btn">
             <img src="./assets/icons/book-plus-outline.svg" alt="addBookBtn" class="add-btn-icon">
         </button>
     </div>
+    <script src="./script.js"></script>
 </body>
 </html>
