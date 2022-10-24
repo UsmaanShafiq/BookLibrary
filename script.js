@@ -30,9 +30,8 @@ function Book(e){
     myLibrary.push(formDataObj);
     
     
-    myLibrary.forEach((val) =>{
-        console.log(val);
-        document.getElementById('bookCardContainer').innerHTML = `
+    const card = myLibrary.map((val) =>{
+        return `
         <div class="card">
             <p class="book-name">${val.book_name}</p>
             <p class="book-author">${val.book_author}</p>
@@ -42,12 +41,12 @@ function Book(e){
                 <input type="image" src="./assets/icons/delete.svg" class="del-btn" alt="delete_btn">
             </div>
         </div>    
-        `;
-    });
+        `
+    }).join('');
+    document.getElementById("bookCardContainer").innerHTML= card;
     
     
     
-    console.log(myLibrary);
     bookForm.reset(); // reset form after submit
     modal.style.visibility = "hidden"; // hide modal after sumit
 }
