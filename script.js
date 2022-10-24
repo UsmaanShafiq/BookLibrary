@@ -43,13 +43,19 @@ function Book(e){
         </div>    
         `
     }).join('');
-    document.getElementById("bookCardContainer").innerHTML= card;
-    
+    document.getElementById("bookCardContainer").innerHTML= card; //render card into the seleted element
+
+
+        if (myLibrary.length > 0) {   
+            const bookDelBtn = document.querySelectorAll('.del-btn');
+            console.log(bookDelBtn);
+        }
     
     
     bookForm.reset(); // reset form after submit
     modal.style.visibility = "hidden"; // hide modal after sumit
 }
+
 
 //Getting Form Data
 bookForm.addEventListener('submit' ,  Book);
