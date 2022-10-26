@@ -9,8 +9,6 @@ const bookReadBtn = document.getElementsByClassName('read-btn');
 const bookDelBtns = document.getElementsByClassName('del-btn');
 
 
-
-
 //Show Modal Box
 addModalBtn.addEventListener("click", () => {
     modal.style.visibility = "visible";
@@ -36,7 +34,7 @@ function Book(e){
     myLibrary.push(formDataObj);
     
     
-    const card = myLibrary.map((val, index) =>{
+    let card = myLibrary.map((val, index) =>{
         return `
         <div class="card">
             <p class="book-name">${val.book_name}</p>
@@ -61,11 +59,7 @@ function Book(e){
     cardContainer.innerHTML= card; //render card into the seleted element
 
 
-    if (cards.length>0) {
-        Array.from(bookDelBtns).map(delBtn => {
-            delBtn.addEventListener('click', delBook);
-        });   
-    }
+    modalBoxHandle();
 
     // Modal Box
     bookForm.reset(); // reset form after submit
@@ -76,19 +70,50 @@ bookForm.addEventListener('submit' ,  Book);
 
 
 function delBook(e) {
-    const cardID = e.target.getAttribute('data-id');
-    console.log(cardID);
+        let cardID = parseInt( e.target.getAttribute('data-id') );
+        console.log(cardID);
+        let updatedLibrary = myLibrary.splice(cardID , 1);
+
+        if(myLibrary.length != updatedLibrary.length){
+            // console.log(myLibrary.length + ',' + updatedArr.length);
+            myLibrary = updatedLibrary;
+            console.log(myLibrary);
+            // let card = myLibrary.map((val, index) =>{
+            //     return `
+            //     <div class="card">
+            //         <p class="book-name">${val.book_name}</p>
+            //         <p class="book-author">${val.book_author}</p>
+            //         <p class="book-pages">${val.book_pages}</p>
+            //         <div class="btn-group">
+            //             <input type="image" 
+            //                 src="./assets/icons/eye.svg" 
+            //                 class="read-btn" data-id="${index}" 
+            //                 alt="read_btn"
+            //             >
+            //             <input 
+            //                 type="image" 
+            //                 src="./assets/icons/delete.svg" 
+            //                 class="del-btn" data-id="${index}" 
+            //                 alt="delete_btn"
+            //             >
+            //         </div>
+            //     </div>    
+            //     `
+            // }).join('');
+            // cardContainer.innerHTML= card; //render card into the seleted element
+        }
     }
 
 
-if (cards.length>0) {
-    Array.from(bookDelBtns).map(delBtn => {
-        delBtn.addEventListener('click', delBook);
-    });   
-}else{
-    modal.style.visibility = "visible"; // show modal box
+function modalBoxHandle(){
+    if (cards.length>0) {
+        Array.from(bookDelBtns).map(delBtn => {
+            delBtn.addEventListener('click', delBook);
+        });   
+    }else{
+        modal.style.visibility = "visible"; // show modal box
+    }
 }
-
-
+modalBoxHandle();
 
 
