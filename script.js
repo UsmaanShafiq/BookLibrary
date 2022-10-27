@@ -85,7 +85,6 @@ bookForm.addEventListener('submit' ,  Book);
 
 function delBook(e) {
         let cardID = parseInt( e.target.getAttribute('data-id') );
-        console.log(cardID);
         let updatedLibrary = myLibrary.splice(cardID , 1);
 
         if(myLibrary.length != updatedLibrary.length){
@@ -137,22 +136,23 @@ addDelFeature();
     * Read/Unread Feature
 */
 
-function readUnreadFeature(e) {
-    // let cardID = parseInt( e.target.getAttribute('data-id') );
-    console.log(e);
-   
-}
 
-// function readUnread(){
-//     if (cards.length>0) {
-//         Array.from(bookReadBtns).map(readBtn => {
-//             readBtn.addEventListener('click', readUnreadFeature);
-//         });   
-//     }
-// }
-// readUnread();
-
-  
-if (cards.length>0) {
+function readUnread(e){
+    console.log(myLibrary.length);
     
+    if (myLibrary.length > 0 ) {
+        Array.from(bookReadBtns).map(readBtn => {
+            readBtn.addEventListener('click' , (e) =>{
+                alert(e.target);
+                let status = e.target.value ;
+                console.log(status);
+            });
+        });
+    }
+
+}
+if (myLibrary.length > 0 ) {
+    Array.from(bookReadBtns).map(readBtn => {
+        readBtn.addEventListener('click' , readUnread);
+    });
 }
