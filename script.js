@@ -5,7 +5,7 @@ const closeModalBtn = document.getElementById('close-modal');
 const bookForm = document.getElementById('addBookForm');
 const cardContainer= document.getElementById("bookCardContainer");
 const cards = document.getElementsByClassName('card');
-const bookReadBtn = document.getElementsByClassName('read-btn');
+const bookReadBtns = document.getElementsByClassName('read-btn');
 const bookDelBtns = document.getElementsByClassName('del-btn');
 
 
@@ -68,8 +68,6 @@ function Book(e){
         `
     }).join('');
     cardContainer.innerHTML= card; //render card into the seleted element
-    
-
 
     addDelFeature();
 
@@ -82,7 +80,7 @@ bookForm.addEventListener('submit' ,  Book);
 
 
 /* 
-* ! Delete Book
+ ! Delete Book Feature
 */
 
 function delBook(e) {
@@ -118,6 +116,7 @@ function delBook(e) {
             cardContainer.innerHTML= card; //render card into the seleted element
             
             addDelFeature();
+
         }
     }
 
@@ -133,3 +132,27 @@ function addDelFeature(){
 }
 addDelFeature();
 
+
+/*
+    * Read/Unread Feature
+*/
+
+function readUnreadFeature(e) {
+    // let cardID = parseInt( e.target.getAttribute('data-id') );
+    console.log(e);
+   
+}
+
+// function readUnread(){
+//     if (cards.length>0) {
+//         Array.from(bookReadBtns).map(readBtn => {
+//             readBtn.addEventListener('click', readUnreadFeature);
+//         });   
+//     }
+// }
+// readUnread();
+
+  
+if (cards.length>0) {
+    
+}
