@@ -22,7 +22,9 @@ closeModalBtn.addEventListener('click', () => {
 
 let myLibrary = [];
 
-
+/*
+* * Add Book
+*/
 function Book(e){
     e.preventDefault(); // Prevent refresh after form submission
     const myFormData = new FormData(e.target);
@@ -41,11 +43,20 @@ function Book(e){
             <p class="book-author">${val.book_author}</p>
             <p class="book-pages">${val.book_pages}</p>
             <div class="btn-group">
-                <input type="image" 
-                    src="./assets/icons/eye.svg" 
-                    class="read-btn" data-id="${index}" 
-                    alt="read_btn"
-                >
+            ${
+                val.read_status === 'yes' 
+                ? ` <input type="image" 
+                src="./assets/icons/eye.svg" 
+                class="read-btn" data-id="${index}" 
+                alt="read_btn"
+                >` 
+                :  `<input type="image" 
+                src="./assets/icons/eye-outline.svg" 
+                class="read-btn" data-id="${index}" 
+                alt="read_btn"
+                >`
+            }
+                
                 <input 
                     type="image" 
                     src="./assets/icons/delete.svg" 
@@ -57,9 +68,10 @@ function Book(e){
         `
     }).join('');
     cardContainer.innerHTML= card; //render card into the seleted element
+    
 
 
-    modalBoxHandle();
+    addDelFeature();
 
     // Modal Box
     bookForm.reset(); // reset form after submit
@@ -69,6 +81,10 @@ function Book(e){
 bookForm.addEventListener('submit' ,  Book);
 
 
+/* 
+* ! Delete Book
+*/
+
 function delBook(e) {
         let cardID = parseInt( e.target.getAttribute('data-id') );
         console.log(cardID);
@@ -76,36 +92,37 @@ function delBook(e) {
 
         if(myLibrary.length != updatedLibrary.length){
             // console.log(myLibrary.length + ',' + updatedArr.length);
-            myLibrary = updatedLibrary;
             console.log(myLibrary);
-            // let card = myLibrary.map((val, index) =>{
-            //     return `
-            //     <div class="card">
-            //         <p class="book-name">${val.book_name}</p>
-            //         <p class="book-author">${val.book_author}</p>
-            //         <p class="book-pages">${val.book_pages}</p>
-            //         <div class="btn-group">
-            //             <input type="image" 
-            //                 src="./assets/icons/eye.svg" 
-            //                 class="read-btn" data-id="${index}" 
-            //                 alt="read_btn"
-            //             >
-            //             <input 
-            //                 type="image" 
-            //                 src="./assets/icons/delete.svg" 
-            //                 class="del-btn" data-id="${index}" 
-            //                 alt="delete_btn"
-            //             >
-            //         </div>
-            //     </div>    
-            //     `
-            // }).join('');
-            // cardContainer.innerHTML= card; //render card into the seleted element
+            let card = myLibrary.map((val, index) =>{
+                return `
+                <div class="card">
+                    <p class="book-name">${val.book_name}</p>
+                    <p class="book-author">${val.book_author}</p>
+                    <p class="book-pages">${val.book_pages}</p>
+                    <div class="btn-group">
+                        <input type="image" 
+                            src="./assets/icons/eye.svg" 
+                            class="read-btn" data-id="${index}" 
+                            alt="read_btn"
+                        >
+                        <input 
+                            type="image" 
+                            src="./assets/icons/delete.svg" 
+                            class="del-btn" data-id="${index}" 
+                            alt="delete_btn"
+                        >
+                    </div>
+                </div>    
+                `
+            }).join('');
+            cardContainer.innerHTML= card; //render card into the seleted element
+            
+            addDelFeature();
         }
     }
 
 
-function modalBoxHandle(){
+function addDelFeature(){
     if (cards.length>0) {
         Array.from(bookDelBtns).map(delBtn => {
             delBtn.addEventListener('click', delBook);
@@ -114,6 +131,5 @@ function modalBoxHandle(){
         modal.style.visibility = "visible"; // show modal box
     }
 }
-modalBoxHandle();
-
+addDelFeature();
 
