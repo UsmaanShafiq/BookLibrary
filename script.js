@@ -8,10 +8,15 @@ const cards = document.getElementsByClassName('card');
 const bookReadBtns = document.getElementsByClassName('read-btn');
 const bookDelBtns = document.getElementsByClassName('del-btn');
 
+let bookId = Math.floor(Math.random() * 100);
+let bookIdSetter = document.getElementById('book_id').value = bookId;
 
 //Show Modal Box
 addModalBtn.addEventListener("click", () => {
     modal.style.visibility = "visible";
+
+    let bookId = Math.floor(Math.random() * 100);
+    document.getElementById('book_id').value = bookId;
 });
 
 closeModalBtn.addEventListener('click', () => {
@@ -34,7 +39,7 @@ function Book(e){
 
     const formDataObj = Object.fromEntries(myFormData.entries());
     myLibrary.push(formDataObj);
-    
+
     
     let card = myLibrary.map((val, index) =>{
         return `
@@ -70,7 +75,7 @@ function Book(e){
     cardContainer.innerHTML= card; //render card into the seleted element
 
     addDelFeature();
-
+    addReadUnread();
     // Modal Box
     bookForm.reset(); // reset form after submit
     modal.style.visibility = "hidden"; // hide modal after sumit
@@ -85,37 +90,43 @@ bookForm.addEventListener('submit' ,  Book);
 
 function delBook(e) {
         let cardID = parseInt( e.target.getAttribute('data-id') );
-        let updatedLibrary = myLibrary.splice(cardID , 1);
+        const removeBook = myLibrary.findIndex( item => item.book_id === myLibrary[cardID].book_id );
 
-        if(myLibrary.length != updatedLibrary.length){
-            // console.log(myLibrary.length + ',' + updatedArr.length);
-            console.log(myLibrary);
-            let card = myLibrary.map((val, index) =>{
-                return `
-                <div class="card">
-                    <p class="book-name">${val.book_name}</p>
-                    <p class="book-author">${val.book_author}</p>
-                    <p class="book-pages">${val.book_pages}</p>
-                    <div class="btn-group">
-                        <input type="image" 
+        if (removeBook >= 0 ) {
+            myLibrary.splice(removeBook , 1);
+                let card = myLibrary.map((val, index) =>{
+                    return `
+                    <div class="card">
+                        <p class="book-name">${val.book_name}</p>
+                        <p class="book-author">${val.book_author}</p>
+                        <p class="book-pages">${val.book_pages}</p>
+                        <div class="btn-group">
+                        ${
+                            val.read_status === 'yes' 
+                            ? ` <input type="image" 
                             src="./assets/icons/eye.svg" 
                             class="read-btn" data-id="${index}" 
                             alt="read_btn"
-                        >
-                        <input 
-                            type="image" 
-                            src="./assets/icons/delete.svg" 
-                            class="del-btn" data-id="${index}" 
-                            alt="delete_btn"
-                        >
-                    </div>
-                </div>    
-                `
-            }).join('');
-            cardContainer.innerHTML= card; //render card into the seleted element
-            
-            addDelFeature();
-
+                            >` 
+                            :  `<input type="image" 
+                            src="./assets/icons/eye-outline.svg" 
+                            class="read-btn" data-id="${index}" 
+                            alt="read_btn"
+                            >`
+                        }
+                            <input 
+                                type="image" 
+                                src="./assets/icons/delete.svg" 
+                                class="del-btn" data-id="${index}" 
+                                alt="delete_btn"
+                            >
+                        </div>
+                    </div>    
+                    `
+                }).join('');
+                cardContainer.innerHTML= card; //render card into the seleted element
+                
+                addDelFeature();
         }
     }
 
@@ -132,27 +143,30 @@ function addDelFeature(){
 addDelFeature();
 
 
+
+
 /*
     * Read/Unread Feature
 */
-
-
 function readUnread(e){
-    console.log(myLibrary.length);
-    
+    let btnID = parseInt( e.target.getAttribute('data-id') );
+    let bookStatus =  myLibrary[btnID].read_status;
+
+    if (bookStatus === 'yes') {
+        myLibrary[btnID].read_status = 'no';
+        e.target.setAttribute('src' , './assets/icons/eye-outline.svg');
+
+    }else if(bookStatus === 'no'){  
+        myLibrary[btnID].read_status = 'yes';
+        e.target.setAttribute('src' , './assets/icons/eye.svg');
+    }
+}
+
+function addReadUnread(){
     if (myLibrary.length > 0 ) {
         Array.from(bookReadBtns).map(readBtn => {
-            readBtn.addEventListener('click' , (e) =>{
-                alert(e.target);
-                let status = e.target.value ;
-                console.log(status);
-            });
+            readBtn.addEventListener('click' , readUnread);
         });
     }
-
 }
-if (myLibrary.length > 0 ) {
-    Array.from(bookReadBtns).map(readBtn => {
-        readBtn.addEventListener('click' , readUnread);
-    });
-}
+addReadUnread();
