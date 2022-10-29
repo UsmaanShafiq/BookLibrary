@@ -1,193 +1,199 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    border: 0;
-    font-family: 'Poppins';
-}
-
-.navBar{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
-    padding: 20px 60px;
-}
-.logo{
-    font-family: 'Poppins';
-    font-size: 40px;
-    font-weight: 600;
-}
-.menu a{
-    background-color: antiquewhite;
-    font-family: 'Poppins';
-    text-decoration: none;
-    color: #000;
-    padding: 10px 30px;
-    font-size: 18px;
-    font-weight: 400;
-    border-radius: 10px;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-}
-.books-card-container{
-    padding: 60px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fill , minmax(300px, 1fr));
-    gap: 20px;
-}
-.card{
-    position: relative;
-    padding: 20px;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-    text-align: center;
-    font-size: 18px;
-    border-radius: 10px;
-}
-.card p{
-    padding: 10px 0;
-    margin: 10px 0;
-    background-color: #FAEBD7;
-    border-radius: 10px;
-}
-.card .btn-group{
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-.card .btn-group input{
-    width: 40px;
-    height: 40px;
-    border-radius: 50px;
-    padding: 8px;
-    margin: 15px 5px 5px 5px;
-}
-.card .btn-group input.read-btn{
-    background: rgb(235, 235, 235);
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-}
-.card .btn-group input.read-btn:hover{
-    background: rgb(200, 250, 200);
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-}
-.card .btn-group input.del-btn{
-    background: rgb(235, 235, 235);
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-}
-.card .btn-group input.del-btn:hover{
-    background: rgb(253, 212, 196);
-}
-.add-book-btn{
-    background: lightsalmon;
-    padding: 10px 12px;
-    border-radius: 50%;
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
-    cursor: pointer;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
-}
-.add-btn-icon{
-    height: 40px;
-    width: 40px;
-}
-#modal-box-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: rgba(0, 0, 0, 0.5);
-    height: 100vh;
-    width: 100%;
-    position: fixed;
-    top: 0%;
-    left: 0%;
-    visibility: hidden;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  border: 0;
+  font-family: "Poppins";
 }
 
-.modal-box{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 40%;
-    margin: 0px auto;
-    padding: 50px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+  padding: 20px 60px;
 }
-.modal-title{
-    text-align: center;
-    font-size: 25px;
-    margin-bottom: 15px;
-    color: rgb(43, 41, 41);
+.logo {
+  font-family: "Poppins";
+  font-size: 40px;
+  font-weight: 600;
 }
-.modal-box form{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+.menu a {
+  background-color: antiquewhite;
+  font-family: "Poppins";
+  text-decoration: none;
+  color: #000;
+  padding: 10px 30px;
+  font-size: 18px;
+  font-weight: 400;
+  border-radius: 10px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
-.modal-box form input{
-    padding: 10px 20px;
-    background: lightgoldenrodyellow;
-    margin-bottom: 15px;
-    font-size: 16px;
-    border-radius: 5px;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+.books-card-container {
+  padding: 60px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
 }
-.modal-box form input[type='submit']{
-    background: lightsalmon;
-    font-weight: 500;
-    color: #fff;
+.card {
+  position: relative;
+  padding: 20px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 10px;
 }
-.modal-box form input[type='submit']:hover{
-    background: rgb(214, 133, 100);
-    cursor: pointer;
+.card p {
+  padding: 10px 0;
+  margin: 10px 0;
+  background-color: #faebd7;
+  border-radius: 10px;
 }
-#close-modal{
-    font-style: italic;
-    color: rgb(136, 133, 133);
-    text-decoration: underline;
-    text-align: center;
-    margin: 0 auto;
-    background: transparent;
-    cursor: pointer;
+.card .btn-group {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.card .btn-group input {
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  padding: 8px;
+  margin: 15px 5px 5px 5px;
+}
+.card .btn-group input.read-btn {
+  background: rgb(235, 235, 235);
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+.card .btn-group input.read-btn:hover {
+  background: rgb(200, 250, 200);
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+.card .btn-group input.del-btn {
+  background: rgb(235, 235, 235);
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+.card .btn-group input.del-btn:hover {
+  background: rgb(253, 212, 196);
+}
+.add-book-btn {
+  background: lightsalmon;
+  padding: 10px 12px;
+  border-radius: 50%;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+}
+.add-btn-icon {
+  height: 40px;
+  width: 40px;
+}
+#modal-box-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  visibility: hidden;
 }
 
-.tool-bar{
-    padding: 10px 15px;
-    border-radius: 50px;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
-    width: fit-content;
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    background-color: #FAEBD7;
+.modal-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+  margin: 0px auto;
+  padding: 50px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
-.tool-bar ul{
-    list-style-type: none;
-    display: flex;
+.modal-title {
+  text-align: center;
+  font-size: 25px;
+  margin-bottom: 15px;
+  color: rgb(43, 41, 41);
+}
+.modal-box form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.modal-box form input {
+  padding: 10px 20px;
+  background: lightgoldenrodyellow;
+  margin-bottom: 15px;
+  font-size: 16px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+}
+.modal-box form input[type="submit"] {
+  background: lightsalmon;
+  font-weight: 500;
+  color: #fff;
+}
+.modal-box form input[type="submit"]:hover {
+  background: rgb(214, 133, 100);
+  cursor: pointer;
+}
+#close-modal {
+  font-style: italic;
+  color: rgb(136, 133, 133);
+  text-decoration: underline;
+  text-align: center;
+  margin: 0 auto;
+  background: transparent;
+  cursor: pointer;
 }
 
-.tool-bar ul li{
-    padding: 0px 10px;
-    background: #fefefe;
-    border-radius: 50px;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+.tool-bar {
+  padding: 10px 15px;
+  border-radius: 50px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+  width: fit-content;
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background-color: #faebd7;
 }
-.tool-bar ul li:not(:first-child){
-    margin-left: 10px;
+.tool-bar ul {
+  list-style-type: none;
+  display: flex;
 }
-.tool-bar ul li a{
-    text-decoration: none;
-    color: #000;
-    font-size: 14px;
+
+.tool-bar ul li {
+  padding: 0px 10px;
+  background: #fefefe;
+  border-radius: 50px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+}
+.tool-bar ul li:not(:first-child) {
+  margin-left: 10px;
+}
+.tool-bar ul li a {
+  text-decoration: none;
+  color: #000;
+  font-size: 14px;
 }
 @media screen and (max-width: 767px) {
-    .modal-box{
-        width: 100%;
-        margin: 0px 15px;
-    }
+  .modal-box {
+    width: 100%;
+    margin: 0px 15px;
+  }
 }

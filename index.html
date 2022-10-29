@@ -1,62 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/8e240e46a8.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/8e240e46a8.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./style.css" />
     <title>Library</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <nav class="navBar">
-            <div class="logo">Library</div>
-            <div class="menu">
-                <a href="#!">Login</a>
-            </div>
-        </nav>
+      <nav class="navBar">
+        <div class="logo">Library</div>
+        <div class="menu">
+          <a href="#!">Login</a>
+        </div>
+      </nav>
     </div>
-    
-    <section class="books-card-container" id="bookCardContainer">
-        
-    </section>
+
+    <section class="books-card-container" id="bookCardContainer"></section>
 
     <div class="add-book-btn-container">
-        <div id="modal-box-container">
-            <div class="modal-box">
-                <h3 class="modal-title">Add Book</h3>
-                <form id="addBookForm">
-                    <input type="hidden" name="book_id" id="book_id">
-                    <input type="text" name="book_name" placeholder="Enter book name..." id="book_name" required autofocus>
-                    <input type="text" name="book_author" placeholder="Enter author name..." id="book_author" required>
-                    <input type="number" name="book_pages" min="1" max="1000" placeholder="Enter total pages..." id="book_pages" required>
-                    <fieldset>
-                        <legend>Already read the book?</legend>
-                        <div class="book-status-fields">
-                          <input type="radio" id="read-yes" name="read_status" value="yes" checked>
-                          <label for="read-yes">Yes</label>
-                          <input type="radio" id="read-no" name="read_status" value="no">
-                          <label for="read-no">No</label>
-                        </div>
-                    </fieldset>
-                    <input type="submit" value="Add Book" id="add_book_btn">
-                </form>
-                <button id="close-modal">Don't want to add.</button>
-            </div>
+      <div id="modal-box-container">
+        <div class="modal-box">
+          <h3 class="modal-title">Add Book</h3>
+          <form id="addBookForm">
+            <input type="hidden" name="book_id" id="book_id" />
+            <input
+              type="text"
+              name="book_name"
+              placeholder="Enter book name..."
+              id="book_name"
+              required
+              autofocus
+            />
+            <input
+              type="text"
+              name="book_author"
+              placeholder="Enter author name..."
+              id="book_author"
+              required
+            />
+            <input
+              type="number"
+              name="book_pages"
+              min="1"
+              max="1000"
+              placeholder="Enter total pages..."
+              id="book_pages"
+              required
+            />
+            <fieldset>
+              <legend>Already read the book?</legend>
+              <div class="book-status-fields">
+                <input
+                  type="radio"
+                  id="read-yes"
+                  name="read_status"
+                  value="yes"
+                  checked
+                />
+                <label for="read-yes">Yes</label>
+                <input
+                  type="radio"
+                  id="read-no"
+                  name="read_status"
+                  value="no"
+                />
+                <label for="read-no">No</label>
+              </div>
+            </fieldset>
+            <input type="submit" value="Add Book" id="add_book_btn" />
+          </form>
+          <button id="close-modal">Don't want to add.</button>
         </div>
-        <div class="tool-bar">
-            <ul>
-                <li><a href="#!">Total Books : 30</a></li>
-                <li><a href="#!">Read Books: 12</a></li>
-                <li><a href="#!">Unread Books: 18</a></li>
-            </ul>
-        </div>
+      </div>
+      <div class="tool-bar">
+        <ul>
+          <li><a href="#!">Total Books : 30</a></li>
+          <li><a href="#!">Read Books: 12</a></li>
+          <li><a href="#!">Unread Books: 18</a></li>
+        </ul>
+      </div>
 
-        <button class="add-book-btn" id="modal-btn">
-            <img src="./assets/icons/book-plus-outline.svg" alt="addBookBtn" class="add-btn-icon">
-        </button>
+      <button class="add-book-btn" id="modal-btn">
+        <img
+          src="./assets/icons/book-plus-outline.svg"
+          alt="addBookBtn"
+          class="add-btn-icon"
+        />
+      </button>
     </div>
     <script src="./script.js"></script>
-</body>
+  </body>
 </html>
