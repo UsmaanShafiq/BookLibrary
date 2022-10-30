@@ -76,6 +76,7 @@ function Book(e) {
 
   addDelFeature();
   addReadUnread();
+  bookFilter();
   // Modal Box
   bookForm.reset(); // reset form after submit
   modal.style.visibility = "hidden"; // hide modal after sumit
@@ -130,6 +131,7 @@ function delBook(e) {
     cardContainer.innerHTML = card; //render card into the seleted element
 
     addDelFeature();
+    bookFilter();
   }
 }
 
@@ -149,15 +151,17 @@ addDelFeature();
  */
 function readUnread(e) {
   let btnID = parseInt(e.target.getAttribute("data-id"));
+
   let bookStatus = myLibrary[btnID].read_status;
 
-  if (bookStatus === "yes") {
+  if (bookStatus == "yes") {
     myLibrary[btnID].read_status = "no";
     e.target.setAttribute("src", "./assets/icons/eye-outline.svg");
-  } else if (bookStatus === "no") {
+  } else if (bookStatus == "no") {
     myLibrary[btnID].read_status = "yes";
     e.target.setAttribute("src", "./assets/icons/eye.svg");
   }
+  bookFilter();
 }
 
 function addReadUnread() {
@@ -168,3 +172,34 @@ function addReadUnread() {
   }
 }
 addReadUnread();
+
+/*
+ * Filter Books
+ */
+function bookFilter() {
+  let totalBooks = myLibrary.length;
+  let readBooks = myLibrary.filter(function (book) {
+    return book.read_status === "yes";
+  }).length;
+
+  let toolBar = `<ul>
+                  <li><a href="#!">Total Books : ${totalBooks}</a></li>
+                  <li><a href="#!">Read Books: ${readBooks}</a></li>
+                  <li><a href="#!">Unread Books: ${
+                    totalBooks - readBooks
+                  }</a></li>
+                </ul>`;
+  document.getElementById("tool-bar").innerHTML = toolBar;
+}
+bookFilter();
+
+/*
+  ? Adding Shortcut key to open modal box
+*/
+document.onkeyup = function (e) {
+  if ((e.key == "n" || e.key == "N") && e.ctrlKey && e.altKey) {
+    modal.style.visibility = "visible";
+  } else if (e.key == "Escape") {
+    modal.style.visibility = "hidden";
+  }
+};

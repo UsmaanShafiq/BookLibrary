@@ -16,6 +16,13 @@
       <nav class="navBar">
         <div class="logo">Library</div>
         <div class="menu">
+          <div class="shortcuts">
+            <p>
+              You can use <kbd>Ctrl</kbd> + <kbd>Atl</kbd> + <kbd>N</kbd> to add
+              New Book.
+            </p>
+            <p>You can use <kbd>Esc</kbd> to close the Modal Box.</p>
+          </div>
           <a href="#!">Login</a>
         </div>
       </nav>
@@ -78,13 +85,7 @@
           <button id="close-modal">Don't want to add.</button>
         </div>
       </div>
-      <div class="tool-bar">
-        <ul>
-          <li><a href="#!">Total Books : 30</a></li>
-          <li><a href="#!">Read Books: 12</a></li>
-          <li><a href="#!">Unread Books: 18</a></li>
-        </ul>
-      </div>
+      <div id="tool-bar"></div>
 
       <button class="add-book-btn" id="modal-btn">
         <img
@@ -94,6 +95,7 @@
         />
       </button>
     </div>
+
     <script src="./script.js"></script>
   </body>
 </html>
